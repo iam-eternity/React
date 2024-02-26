@@ -11,7 +11,7 @@ function App() {
   const passwordRef = useRef(null)
   const passwordGenerator = useCallback(() => {
     let password = ""
-    let str ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let str ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     if (numberAllowed) str += "0123456789"
     if (charAllowed) str+= "!@#$%^&*()_+-={}[]<>?`~/|"
@@ -40,21 +40,22 @@ function App() {
     <h1
       className='text-4xl text-center'
     >Password Generator</h1>
-<div className="w-full max-w-md mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
+<div className="w-full max-w-lg mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
   <div className="flex shadow rounded-lg overflow-hidden my-4">
     <input type="text"
     value={password}
-    className='outline-none w-full py-3 px-3'
+    className='outline-none w-full py-3 px-3  text-2xl'
     placeholder='password'
     readOnly
     ref={passwordRef}
     />
     <button
     onClick={copyPasswwordToClipboard}
-    className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>copy</button>
+    className='
+    outline-none bg-blue-700 text-white font-bold text-lg px-3 py-0.5 shrink-0'>copy</button>
   </div>
-  <div className="flex text-sm gap-x-2">
-    <div className="flex items-center gap-x-1">
+  <div className="flex text-sm gap-x-4 text-lg font-bold">
+    <div className="flex items-center gap-x-2">
       <input type="range" 
       min={6}
       max={100}
@@ -64,7 +65,7 @@ function App() {
       />
       <label >Length: {length}</label>
     </div>
-    <div className="flex items-center gap-x-1">
+    <div className="flex items-center gap-x-2">
     <input type="checkbox"
       defaultChecked={numberAllowed}
       id='numberAllowed'
@@ -74,7 +75,7 @@ function App() {
     />
     <label htmlFor='NumberInput'>Number</label>
     </div>
-    <div className="flex items-center gap-x-1">
+    <div className="flex items-center gap-x-2">
     <input type="checkbox"
       defaultChecked={charAllowed}
       id='charAllowed'
