@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import Header from '../components/header/header'
 import './App.css'
+import Footer from '../components/footer/footer'
 
 function App() {
   return (
     <>
-      <h1 className='bg-green-600 p-4'>React Router</h1>
+      <Header />
+      <Footer />
     </>
   )
 }
