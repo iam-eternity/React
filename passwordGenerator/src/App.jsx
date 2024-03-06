@@ -3,7 +3,8 @@ import './App.css'
 
 function App() {
   const [ length, setLength ] = useState(8)
-  const [ numberAllowed, setNumberAllowed ] = useState(false)
+  const [ upperCaseAllowed, setUpperCaseAllowed ] = useState(false)
+  const [ lowerCaseAllowed, setLowerCaseAllowed ] = useState(false)
   const [ charAllowed, setCharAllowed ] = useState(false)
   const [ password, setPassword ] = useState("")
   
@@ -11,9 +12,9 @@ function App() {
   const passwordRef = useRef(null)
   const passwordGenerator = useCallback(() => {
     let password = ""
-    let str ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-
-    if (numberAllowed) str += "0123456789"
+    let str = "0123456789"
+    if (upperCaseAllowed) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if (lowerCaseAllowed) str += "abcdefghijklmnopqrstuvwxyz"
     if (charAllowed) str+= "!@#$%^&*()_+-={}[]<>?`~/|"
 
     for (let i = 0; i <= length; i++) {
@@ -23,7 +24,7 @@ function App() {
     }
 
     setPassword(password)
-  }, [length, charAllowed, numberAllowed, setPassword])
+  }, [length, charAllowed, lowerCaseAllowed, upperCaseAllowed, setPassword])
 
   const copyPasswwordToClipboard = useCallback(() => {
     passwordRef.current?.select();
@@ -34,13 +35,13 @@ function App() {
 
   useEffect(() => {
     passwordGenerator()
-  }, [length, numberAllowed, charAllowed, passwordGenerator])
+  }, [length, lowerCaseAllowed, upperCaseAllowed, charAllowed, passwordGenerator])
   return (
     <>
     <h1
       className='text-4xl text-center font-bold'
     >Password Generator</h1>
-<div className="w-full max-w-xl mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
+<div className="w-full max-w-2xl max-h-4xl mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
   <div className="flex shadow rounded-lg overflow-hidden my-4">
     <input type="text"
     value={password}
@@ -67,13 +68,23 @@ function App() {
     </div>
     <div className="flex items-center gap-x-3">
     <input type="checkbox"
-      defaultChecked={numberAllowed}
+      defaultChecked={lowerCaseAllowed}
       id='numberAllowed'
       onChange={() => {
-        setNumberAllowed((prev) => !prev)
+        setLowerCaseAllowed((prev) => !prev)
       }}
     />
-    <label htmlFor='NumberInput'>Number</label>
+    <label htmlFor='NumberInput'>Lower Case Alphabets</label>
+    </div>
+    <div className="flex items-center gap-x-3">
+    <input type="checkbox"
+      defaultChecked={upperCaseAllowed}
+      id='upperCaseAllowed'
+      onChange={() => {
+        setUpperCaseAllowed((prev) => !prev)
+      }}
+    />
+    <label htmlFor='Lower Case Input'>Upper Case Alphabets</label>
     </div>
     <div className="flex items-center gap-x-3">
     <input type="checkbox"
