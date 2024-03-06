@@ -41,11 +41,11 @@ function App() {
     <h1
       className='text-4xl text-center font-bold'
     >Password Generator</h1>
-<div className="w-full max-w-2xl max-h-4xl mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
+<div className="w-full max-w-xl mx-auto shadow-md rounded-lg text-orange-500 bg-gray-800 px-4 py-4 my-8 ">
   <div className="flex shadow rounded-lg overflow-hidden my-4">
     <input type="text"
     value={password}
-    className='outline-none w-full py-3 px-3  text-2xl'
+    className='outline-none w-full py-3 px-3 text-2xl'
     placeholder='password'
     readOnly
     ref={passwordRef}
@@ -55,18 +55,18 @@ function App() {
     className='
     outline-none bg-blue-700 text-white font-bold text-lg px-3 py-0.5 shrink-0'>copy</button>
   </div>
-  <div className="flex text-sm gap-x-5 text-xl font-bold">
-    <div className="flex items-center gap-x-3">
+  <div className="flex-col gap-x-5 text-xl font-bold">
+    <label >Password Length: {length}</label>
+    <div className="flex items-center justify-center py-2">
       <input type="range" 
       min={6}
       max={100}
       value={length}
-      className='cursor-pointer'
+      className='cursor-pointer w-3/6'
       onChange={(e) => {setLength(e.target.value)}}
       />
-      <label >Length: {length}</label>
     </div>
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center justify-center gap-x-3">
     <input type="checkbox"
       defaultChecked={lowerCaseAllowed}
       id='numberAllowed'
@@ -74,9 +74,9 @@ function App() {
         setLowerCaseAllowed((prev) => !prev)
       }}
     />
-    <label htmlFor='NumberInput'>Lower Case Alphabets</label>
+    <label htmlFor='NumberInput'>Include Lower Case Alphabets</label>
     </div>
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center justify-center gap-x-3">
     <input type="checkbox"
       defaultChecked={upperCaseAllowed}
       id='upperCaseAllowed'
@@ -84,9 +84,9 @@ function App() {
         setUpperCaseAllowed((prev) => !prev)
       }}
     />
-    <label htmlFor='Lower Case Input'>Upper Case Alphabets</label>
+    <label htmlFor='Lower Case Input'>Include Upper Case Alphabets</label>
     </div>
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center justify-center gap-x-3">
     <input type="checkbox"
       defaultChecked={charAllowed}
       id='charAllowed'
@@ -94,7 +94,7 @@ function App() {
         setCharAllowed((prev) => !prev)
       }}
     />
-    <label htmlFor='characterInput' >Characters</label>
+    <label htmlFor='characterInput' className='mr-9' >Include Special Characters</label>
     </div>
   </div>
 </div>
