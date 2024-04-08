@@ -1,7 +1,7 @@
 import './App.css'
 import Login from './component/Login'
 import Profile from './component/Profile'
-import UserContextProvider from '../../mini-context/src/context/ContextProvider'
+import UserContextProvider from './context/UserContextProvider'
 
 function App() {
 
