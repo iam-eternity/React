@@ -1,20 +1,16 @@
-import { useState } from 'react'
 import './App.css'
-import UserContextProvider from './context/UserContextProvider'
 import Login from './component/Login'
 import Profile from './component/Profile'
+import UserContextProvider from '../../mini-context/src/context/ContextProvider'
 
 function App() {
 
   return (
-    <>
       <UserContextProvider>
-        <h1>React with Chai</h1>
+        <h1>React with chai</h1>
         <Login />
         <Profile />
-        
       </UserContextProvider>
-    </>
   )
 }
 
